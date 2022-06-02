@@ -3,17 +3,16 @@ dotenv.config()
 
 const apiKey = process.env.KEY
 
-const displaySection = document.querySelector('.display-section')
-
 
 function getBooks() {
+  const displaySection = document.querySelector('.display-section')
   const data = null
   const xhr = new XMLHttpRequest()
   xhr.withCredentials = true
 
   xhr.addEventListener("readystatechange", function() {
     if (this.readyState === this.DONE) {
-      console.log(this.responseText)
+      displaySection.innerHTML = this.responseText
     }
   })
 
