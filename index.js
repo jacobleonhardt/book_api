@@ -1,15 +1,26 @@
 const key = apiInfo.SECRET_KEY
+const displaySection = document.querySelector('.display-section')
+
+function formatBookList(obj) {
+  const getOldTestament = obj["The_Old_Testament"].split('. ')
+  const getNewTestament = obj["The_New_Testament"].split('. ')
+
+  const list = [...getOldTestament, ...getNewTestament]
+
+  displaySection.innerHTML = list
+
+  return
+}
 
 function getBooks() {
 
-  const displaySection = document.querySelector('.display-section')
   const data = null
   const xhr = new XMLHttpRequest()
   xhr.withCredentials = true
 
   xhr.addEventListener("readystatechange", function() {
     if (this.readyState === this.DONE) {
-      displaySection.innerHTML = this.responseText
+      formatBookList(JSON.parse(this.responseText))
     }
   })
 
