@@ -2,18 +2,15 @@ const key = apiInfo.SECRET_KEY
 const displaySection = document.querySelector('.display-section')
 
 function formatBookList(obj) {
-  const getOldTestament = obj["The_Old_Testament"].split('. ')
-  const getNewTestament = obj["The_New_Testament"].split('. ')
+  const OldTestament = obj["The_Old_Testament"].split('. ').filter( book => book.length > 2)
+  const NewTestament = obj["The_New_Testament"].split('. ').filter( book => book.length > 2)
 
-  const list = [...getOldTestament, ...getNewTestament]
-
-  displaySection.innerHTML = list
+  displaySection.innerHTML = [...OldTestament, ...NewTestament]
 
   return
 }
 
 function getBooks() {
-
   const data = null
   const xhr = new XMLHttpRequest()
   xhr.withCredentials = true
