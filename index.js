@@ -10,9 +10,9 @@ function formatBookList(obj) {
   return
 }
 
-function formatVerse(book, chapter, verse, text) {
+function formatVerse({ "Book":book, "Chapter":chapter, "Verse":verse, "Output":text }) {
   return displaySection.innerHTML = (
-    `<h1><${book} ${chapter}:${verse}</h1>
+    `<h1>${book} ${chapter}:${verse}</h1>
     <p>${text}</p>`
   )
 }
@@ -32,8 +32,7 @@ function getVerseOfBook(book, chapter, verse) {
 
   xhr.addEventListener("readystatechange", function () {
     if (this.readyState === this.DONE) {
-      const { "Book": book, "Chapter": chapter, "Verse": verse, "Output": text } = this.response
-      formatVerse(book, chapter, verse, text)
+      formatVerse(JSON.parse(this.response))
     }
   });
 
