@@ -10,6 +10,40 @@ function formatBookList(obj) {
   return
 }
 
+function formatVerse(obj) {
+  console.log('****', obj)
+  return displaySection.innerHTML = (
+    `<h1>${obj.Book} ${obj["Chapter"]}:${obj["Verse"]}</h1><br/>
+    <p>${obj["Output"]}</p>`
+  )
+}
+
+function submitForm() {
+  let book = document.querySelector("#book").value
+  let chapter = document.querySelector("#chapter").value
+  let verse = document.querySelector("#verse").value
+
+  return getVerseOfBook(book, chapter, verse)
+}
+
+function getVerseOfBook(book, chapter, verse) {
+  const data = null
+  const xhr = new XMLHttpRequest()
+  xhr.withCredentials = true
+
+  xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === this.DONE) {
+      formatVerse(this.response)
+    }
+  });
+
+  xhr.open('Get', `https://ajith-holy-bible.p.rapidapi.com/GetVerseOfaChapter?Book=${book}&chapter=${chapter}&Verse=${verse}`)
+  xhr.setRequestHeader('X-RapidAPI-Host', 'ajith-holy-bible.p.rapidapi.com')
+  xhr.setRequestHeader('X-RapidAPI-Key', `${key}`)
+
+  xhr.send(data)
+}
+
 function getBooks() {
   const data = null
   const xhr = new XMLHttpRequest()
