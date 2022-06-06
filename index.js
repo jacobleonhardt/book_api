@@ -11,10 +11,11 @@ function formatBookList(obj) {
 }
 
 function formatVerse(obj) {
-  console.log('****', obj)
+  const objKeys = Object.values(obj)
+
   return displaySection.innerHTML = (
-    `<h1>${obj.Book} ${obj["Chapter"]}:${obj["Verse"]}</h1><br/>
-    <p>${obj["Output"]}</p>`
+    `<h1>${obj[objKeys[0]]} ${obj[objKeys[1]]}:${obj[objKeys[2]]}</h1><br/>
+    <p>${obj[objKeys[3]]}</p>`
   )
 }
 
