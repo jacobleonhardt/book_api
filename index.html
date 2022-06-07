@@ -4,29 +4,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Sword Drill</title>
 </head>
 <body>
+  <h1>Sword Drill</h1>
   <form action="" onSubmit=submitForm()>
-    <div>
+    <div class="form__input">
       <label>Book</label>
       <input type="text" placeholder="Book Name" id="book" />
     </div>
-    <div>
+    <div class="form__input">
       <label>Chapter</label>
       <input type="text" placeholder="Chapter Number" id="chapter" />
     </div>
-    <div>
+    <div class="form__input">
       <label>Verse</label>
       <input type="text" placeholder="Verse Number" id="verse" />
     </div>
-    <div>
-      <input type="submit" value="Find"/>
+    <div class="form__input__submit">
+      <input type="submit" value="Find Passage"/>
     </div>
 
   </form>
 
-  <button onClick=getBooks()>Get Books</button>
+  <button class="btn--get-all" onClick=getBooks()>Get All Books</button>
 
   <div class="display-section"></div>
 
